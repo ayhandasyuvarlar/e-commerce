@@ -1,0 +1,17 @@
+@import url(https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap);
+
+.ant-divider-inner-text {
+  font-family: "Lexend Deca", sans-serif !important;
+  font-weight: bold !important;
+}
+.user-chapter {
+  width: 1300px;
+  margin: 0px auto;
+  height: 8rem;
+}
+.user-chapter img {
+  width: 100%;
+  height: 8rem;
+  border-radius: 5px;
+  object-fit: cover;
+}

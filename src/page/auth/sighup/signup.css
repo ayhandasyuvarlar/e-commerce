@@ -1,0 +1,19 @@
+
+.form-container {
+  border: 1px solid #e5e7e9 !important;
+  border-radius: 5px;
+  height : 500px;
+}
+.form-context input {
+  border: 1px solid #d7dbdd;
+}
+.form-title {
+  font-family: "Lexend Deca", sans-serif;
+  margin-bottom: 40px !important;
+}
+.form-label {
+  font-family: "Lexend Deca", sans-serif;
+}
+.error {
+   font-family: "Lexend Deca", sans-serif;
+}

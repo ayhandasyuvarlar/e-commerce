@@ -1,0 +1,15 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap);
+
+a {
+  text-decoration: none;
+  color: #434343;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: large;
+}
+.left {
+  border: none;
+}
+.left a:hover {
+  color: #46546654;
+}

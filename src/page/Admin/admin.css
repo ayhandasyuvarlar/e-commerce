@@ -1,0 +1,43 @@
+.admin_Card_Img {
+  height: 250px;
+  max-height: 250px !important;
+  overflow: hidden !important;
+  border-radius: 10px;
+}
+.admin_Card_Img .img {
+  height: 250px;
+  object-fit: contain;
+}
+@import url(https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap);
+
+body {
+  font-family: "Lexend Deca", sans-serif;
+}
+
+.text {
+  font-family: "Lexend Deca", sans-serif;
+  font-size: xx-large;
+  font-weight: bold;
+}
+.admin_navbar {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+.order-head {
+  margin-top: 40px;
+  height: 150px;
+  width: 100%;
+  background-image: url(./img/tr_vi_2.jpg);
+  background-size: cover;
+  background-position: 25% 20%;
+}
+
+.products_list {
+  margin-top: 40px;
+  height: 150px;
+  width: 100%;
+  background-size: cover;
+  background-position: 25% 40%;
+  background-image: url(https://img.freepik.com/premium-photo/3d-rendering-shopping-cart-laptop_172660-170.jpg?size=626&ext=jpg&uid=R64745178&ga=GA1.2.478340825.1670498327&semt=sph);
+}
