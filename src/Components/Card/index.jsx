@@ -8,7 +8,7 @@ import { useAuth } from "../Context/authContext";
 export default function Card({ item }) {
   const { addtoBasket, items } = useBasket();
   const { user, isLogding } = useAuth();
-  const findBasketItem = items.find((item) => item._id === item._id);
+  const findBasketItem = items.find((basket_item) => basket_item._id === item._id);
   return (
     <Box
       overflow={"hidden"}
