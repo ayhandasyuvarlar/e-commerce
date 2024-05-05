@@ -1,6 +1,6 @@
 html {
   font-size: 14px;
-  background-color: #f9f9f9;
+ background-color: white;
   scroll-behavior: smooth;
 }
 
@@ -14,3 +14,11 @@ html {
 }
 
 
+.p-card-title {
+  font-size: 18px !important;
+}
+
+.p-card-subtitle {
+  font-size: 14px !important;
+  color: gray;
+}
