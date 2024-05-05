@@ -1,11 +1,12 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
+import { PrimeReactProvider } from "primereact/api";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import Header from "./components/Header";
+import Providers from "@/redux/provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,8 +28,10 @@ export default function RootLayout({ children }) {
           className={poppins.className}
           style={{ maxWidth: 1300, margin: "auto", }}
         >
-          <Header></Header>
+        <Providers>
+        <Header></Header>
           {children}
+        </Providers>
         </body>
       </PrimeReactProvider>
     </html>
