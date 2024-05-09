@@ -27,7 +27,6 @@ const productsSlice = createSlice({
       state.loading = false;
       state.topSellers = action.payload;
       state.error = null;
-      console.log(action.payload)
     });
     builder.addCase(fetchTopSellers.rejected, (state, action) => {
       state.loading = false;
