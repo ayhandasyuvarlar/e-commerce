@@ -15,9 +15,12 @@ export default function Header() {
         <nav className="flex w-30rem flex flex-row justify-content-end align-items-center">
           <ul className="flex flex-row align-items-center gap-3">
             <li className="">
-              <Button className="p-2 bg-transparent border-bluegray-200  z-1">
+            <Link
+                href="/basket"
+                className="p-2 bg-transparent border-bluegray-200 border-round flex justify-content-center align-items-center border-1"
+              >
                 <icons.TbBasketCheck size={20} color="black" />
-              </Button>
+              </Link>
             </li>
             <li>
               <Link
