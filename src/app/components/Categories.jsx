@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState, useEffect } from "react";
 import {
   fetchCategory,
@@ -7,6 +7,8 @@ import {
 import { Divider } from "primereact/divider";
 import { useDispatch, useSelector } from "react-redux";
 import ProductsCard from "./ProductsCard";
+import Skelton from "./Skelton";
+import ErrorMessage from "./ErrorMessage";
 
 const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState("electronics");
@@ -44,9 +46,11 @@ const Categories = () => {
         ))}
       </ul>
       <aside className="flex flex-row w-full flex-wrap gap-3 justify-content-start mt-5">
+        {categoryState.loading && <Skelton itemCount={4} />}
         {categoryState.categoryProducts.map((item) => (
           <ProductsCard key={item.id} {...item}></ProductsCard>
         ))}
+        {categoryState.error && <ErrorMessage message={allProducts.error} />}
       </aside>
     </main>
   );

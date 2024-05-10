@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Skelton from "./Skelton";
 import ProductsCard from "./ProductsCard";
+import ErrorMessage from "./ErrorMessage";
 
 const TopSellers = () => {
   const topSellersProducts = useSelector((state) => state.products);
@@ -25,6 +26,7 @@ const TopSellers = () => {
               <ProductsCard key={item.id} {...item}></ProductsCard>
             ))
           : null}
+          {topSellersProducts.error && <ErrorMessage message={allProducts.error} />}
       </aside>
     </main>
   );

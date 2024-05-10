@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductsCard from "./ProductsCard";
 import ErrorMessage from "./ErrorMessage";
+import Skelton from "./Skelton";
 
 const Products = () => {
   const allProducts = useSelector((state) => state.products);
@@ -20,6 +21,7 @@ const Products = () => {
       </Divider>
       {allProducts.error && <ErrorMessage message={allProducts.error} />}
       <aside className="flex flex-row w-full flex-wrap gap-3 justify-content-start mt-5 ">
+      {allProducts.loading && <Skelton itemCount={4} />}
         {allProducts.allProducts.length
           ? allProducts.allProducts.map((item) => (
               <ProductsCard key={item.id} {...item}></ProductsCard>
