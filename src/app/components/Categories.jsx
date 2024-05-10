@@ -1,50 +1,53 @@
-"use client";
-
+'use client'
+import { useState, useEffect } from "react";
 import {
   fetchCategory,
   fetchCategoryProducts,
 } from "@/redux/Slice/categoriesSlice";
 import { Divider } from "primereact/divider";
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ProductsCard from "./ProductsCard";
 
 const Categories = () => {
-  let selectCategory;
-  const handleClick = (category) => {
-    selectCategory = category;
-    dispatch(fetchCategoryProducts(selectCategory));
-  };
-  const category = useSelector((state) => state.category);
+  const [selectedCategory, setSelectedCategory] = useState("electronics");
+  const categoryState = useSelector((state) => state.category);
   const dispatch = useDispatch();
+
+  const handleClick = (category) => {
+    setSelectedCategory(category);
+    dispatch(fetchCategoryProducts(category));
+  };
+
   useEffect(() => {
     dispatch(fetchCategory());
-    dispatch(fetchCategoryProducts(selectCategory));
-    console.log(JSON.stringify(category));
-  }, [selectCategory]);
+    dispatch(fetchCategoryProducts(selectedCategory));
+  }, [selectedCategory, dispatch]);
 
   return (
     <main className="my-7">
       <Divider align="left">
         <h1 className="px-3 text-5xl font-bold">Categories</h1>
       </Divider>
-      <ul className="flex flex-row w-full mt-2 p-5 pl-0 justify-content-start gap-4  ">
-        {category.categories.length
-          ? category.categories.map((category, idx) => {
-              return (
-                <li
-                  className="border-1 border-round-xl bg-blue-900 text-white font-bold p-2 px-6 cursor-pointer"
-                  key={idx}
-                  onClick={() => handleClick(category)}
-                >
-                  {category}
-                </li>
-              );
-            })
-          : null}
+      <ul className="flex flex-row w-full mt-2 p-5 pl-0 justify-content-start gap-4">
+        {categoryState.categories.map((category, idx) => (
+          <li
+            key={idx}
+            className={`border-round-md text-xl p-2 px-6 cursor-pointer ${
+              category === selectedCategory
+                ? "bg-green-500 text-white"
+                : "bg-blue-900 text-white"
+            }`}
+            onClick={() => handleClick(category)}
+          >
+            {category}
+          </li>
+        ))}
       </ul>
-      <div> 
-       {JSON.stringify(category.categoryProducts)} 
-      </div>
+      <aside className="flex flex-row w-full flex-wrap gap-3 justify-content-start mt-5">
+        {categoryState.categoryProducts.map((item) => (
+          <ProductsCard key={item.id} {...item}></ProductsCard>
+        ))}
+      </aside>
     </main>
   );
 };

@@ -11,7 +11,7 @@ const TopSellers = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTopSellers());
-  }, []);
+  }, [dispatch]);
 
   return (
     <main className="flex flex-column w-full mt-8 mb-8">
@@ -19,13 +19,13 @@ const TopSellers = () => {
         <h1 className="px-3 text-5xl font-bold">Top Sellers</h1>
       </Divider>
       {topSellersProducts.loading && <Skelton itemCount={4} />}
-     <aside className="flex flex-row w-full flex-wrap gap-3 justify-content-center mt-5 ">
-     {topSellersProducts.topSellers.length
-        ? topSellersProducts.topSellers.map((item) => (
-            <ProductsCard key={item.id} {...item}></ProductsCard>
-          ))
-        : null}
-     </aside>
+      <aside className="flex flex-row w-full flex-wrap gap-3 justify-content-center mt-5 ">
+        {topSellersProducts.topSellers.length
+          ? topSellersProducts.topSellers.map((item) => (
+              <ProductsCard key={item.id} {...item}></ProductsCard>
+            ))
+          : null}
+      </aside>
     </main>
   );
 };

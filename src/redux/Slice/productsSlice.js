@@ -11,11 +11,28 @@ const initialState = {
 
 export const fetchTopSellers = createAsyncThunk(
   "products/fetchTopSellers",
-  () => {
-    return axios.get('https://fakestoreapi.com/products?limit=4').then((response) => response.data);
+  async () => {
+    try {
+      const response = await axios.get(
+        "https://fakestoreapi.com/products?limit=4"
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 );
-
+export const fetchAllProducts = createAsyncThunk(
+  "products/fetchAllProducts",
+  async () => {
+    try {
+      const response = await axios.get("https://fakestoreapi.com/products");
+      return response.data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
 const productsSlice = createSlice({
   name: "products",
   initialState: initialState,
@@ -31,6 +48,19 @@ const productsSlice = createSlice({
     builder.addCase(fetchTopSellers.rejected, (state, action) => {
       state.loading = false;
       state.topSellers = [];
+      state.error = action.error.message;
+    });
+    builder.addCase(fetchAllProducts.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
+      state.loading = false;
+      state.allProducts = action.payload;
+      state.error = null;
+    });
+    builder.addCase(fetchAllProducts.rejected, (state, action) => {
+      state.loading = false;
+      state.allProducts = [];
       state.error = action.error.message;
     });
   },
