@@ -1,41 +1,39 @@
-import { Poppins } from "next/font/google";
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { PrimeReactProvider } from "primereact/api";
-import "primereact/resources/themes/saga-blue/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
-import "primeflex/primeflex.css";
-import Providers from "@/redux/provider";
-import Header from "../components/Header";
+export default function layout({ children }) {
+  const pathname = usePathname();
+  const isLoginPage = pathname.startsWith("/auth/login");
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-poppins",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
-
-
-export const metadata = {
-  title: "Login",
-  description: "E-commerce login page",
-};
-
-export default function RootLayout({ children }) {
   return (
-   <>
-<html lang="tr">
-      <PrimeReactProvider>
-        <body
-          className={poppins.className}
-          style={{ maxWidth: 1500, margin: "auto", }}
-        >
-        <Providers>
-          {children}
-        </Providers>
-        </body>
-      </PrimeReactProvider>
-    </html>
-   </>
+    <main
+      className=" flex flex-row h-screen align-items-center justify-content-center  p-0  m-auto"
+    >
+      <div
+        className="flex  flex-column border-1  w-6 border-gray-300 border-round-xl overflow-hidden"
+        style={{ height: "80vh" }}
+      >
+        <div className="w-full p-5 gap-1 h-auto  flex flex-column align-items-start justify-content-start">
+          <p className="text-4xl font-bold">Welcome Back 👋🏻</p>
+          {isLoginPage ? (
+            <p className="text-lg text-black-alpha-50 ">
+              Don't have a account{" "}
+              <Link className="underline" href={"/auth/register"}>
+                Sign up
+              </Link>
+            </p>
+          ) : (
+            <p className="text-lg text-black-alpha-50 ">
+              Do have a account{" "}
+              <Link className="underline" href={"/auth/login"}>
+                Sign İn
+              </Link>
+            </p>
+          )}
+        </div>
+        {children}
+      </div>
+    </main>
   );
 }

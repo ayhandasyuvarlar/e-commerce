@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Login = () => {
   return (
-    <div>Login</div>
-  )
-}
+    <section className="flex flex-column w-full h-full ">
+      <h1>Login</h1>
+    </section>
+  );
+};
 
-export default Login
+export default Login;
