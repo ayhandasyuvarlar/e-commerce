@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <main className=" flex flex-row h-screen align-items-center justify-content-center  p-0  m-auto">
       <div
-        className="flex  flex-column border-1  w-6 border-gray-300 border-round-xl overflow-hidden"
+        className="flex  flex-column border-1 shadow-3  w-5 border-gray-300 border-round-xl overflow-hidden"
         style={{ height: "80vh" }}
       >
         <div className="w-full p-5 gap-1 h-auto  flex flex-column align-items-start justify-content-start">
@@ -18,14 +18,14 @@ export default function Layout({ children }) {
             <p className="text-lg text-black-alpha-50 ">
               Don't have a account
               <Link className="underline" href={"/auth/register"}>
-                Sign up
+                &nbsp; Sign up
               </Link>
             </p>
           ) : (
             <p className="text-lg text-black-alpha-50 ">
               Do have a account{" "}
               <Link className="underline" href={"/auth/login"}>
-                Sign İn
+                &nbsp; Sign İn
               </Link>
             </p>
           )}
