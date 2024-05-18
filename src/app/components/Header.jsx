@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import icons from "../constants/icons";
 import Link from "next/link";
-import PersonalNav from "./PersonalNav";
+
 
 export default function Header() {
   const pathname = usePathname();
