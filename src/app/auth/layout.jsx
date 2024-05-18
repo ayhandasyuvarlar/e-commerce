@@ -19,7 +19,7 @@ export default function Layout({ children }) {
             <p className="text-lg text-black-alpha-50 ">
               Don't have a account
               <Link className="underline" href={"/auth/register"}>
-                &nbsp; Register
+                 Register
               </Link>
             </p>
           ) : (
