@@ -17,14 +17,14 @@ export default function Layout({ children }) {
           <p className="text-4xl font-bold">Welcome Back 👋🏻</p>
           {isLoginPage ? (
             <p className="text-lg text-black-alpha-50 ">
-              Don't have a account
+              Dont have a account
               <Link className="underline" href={"/auth/register"}>
                  Register
               </Link>
             </p>
           ) : (
             <p className="text-lg text-black-alpha-50 ">
-              Do have a account{" "}
+              Do have a account
               <Link className="underline" href={"/auth/login"}>
                Login
               </Link>
