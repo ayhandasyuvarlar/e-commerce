@@ -1,14 +1,20 @@
-'use client'
+"use client";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import icons from "../constants/icons";
 import Link from "next/link";
+import PersonalNav from "./PersonalNav";
 
 export default function Header() {
   const pathname = usePathname();
-
+  const [useControl, setControl] = useState(false);
   // "/auth/login" veya "/auth/register" için aynı header yapısını kullanın
   const isAuthPage = pathname.startsWith("/auth");
+
+  useEffect(() => {
+    const checkUser = localStorage.getItem("username");
+    checkUser ? setControl(true) : setControl(false);
+  }, []);
 
   if (isAuthPage) {
     return null; // Eğer auth sayfasındaysak hiçbir şey gösterme
@@ -33,12 +39,21 @@ export default function Header() {
               </li>
               {/* Auth sayfaları için login ve register aynı şekilde görüntülensin */}
               <li>
-                <Link
-                  href="/auth/login"
-                  className="p-2 bg-transparent border-bluegray-200 border-round flex justify-content-center align-items-center border-1"
-                >
-                  <icons.AiOutlineLogin size={20} color="black" />
-                </Link>
+                {useControl ? (
+                  <Link
+                    href="/personal"
+                    className="p-2 bg-transparent border-bluegray-200 border-round flex justify-content-center align-items-center border-1"
+                  >
+                    <icons.FaUser size={20} color="black" />
+                  </Link>
+                ) : (
+                  <Link
+                    href="/auth/login"
+                    className="p-2 bg-transparent border-bluegray-200 border-round flex justify-content-center align-items-center border-1"
+                  >
+                    <icons.AiOutlineLogin size={20} color="black" />
+                  </Link>
+                )}
               </li>
             </ul>
           </nav>

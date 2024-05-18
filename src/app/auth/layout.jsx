@@ -19,14 +19,14 @@ export default function Layout({ children }) {
             <p className="text-lg text-black-alpha-50 ">
               Don't have a account
               <Link className="underline" href={"/auth/register"}>
-                &nbsp; Sign up
+                &nbsp; Register
               </Link>
             </p>
           ) : (
             <p className="text-lg text-black-alpha-50 ">
               Do have a account{" "}
               <Link className="underline" href={"/auth/login"}>
-                &nbsp; Sign İn
+                &nbsp; Login
               </Link>
             </p>
           )}

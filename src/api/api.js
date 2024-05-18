@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://fakestoreapi.com', // API'nizin temel URL'si
-  timeout: 100000,
+  timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },

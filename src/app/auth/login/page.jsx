@@ -9,17 +9,18 @@ import Input from "@/app/components/InputText";
 import validationLogin from "@/validation/validationLogin";
 import { signInUser } from "@/redux/auth/signInSlice";
 import { Toaster, toast } from "alert";
+import { useRouter } from 'next/navigation';
 // signInSlice dosyasını doğru yolda ithal edin
 
 const Login = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { loading, error } = useSelector((state) => state.signIn);
 
   const formik = useFormik({
     initialValues: {
       userName: "",
       password: "",
-      email: "",
     },
     validationSchema: validationLogin,
     onSubmit: (values, { setSubmitting, resetForm }) => {
@@ -27,6 +28,7 @@ const Login = () => {
         .unwrap()
         .then(() => {
           toast.success("This is a success toast");
+          router.push('/')
           // Başarılı oturum açma işlemi
           resetForm();
         })
@@ -42,7 +44,7 @@ const Login = () => {
     <main className="flex flex-column w-7 gap-2 m-auto mt-0">
       <Toaster />
       <Typography tag={"h1"} className="mb-5 mt-8">
-        Sign İn
+        Login 👇🏻
       </Typography>
       <form
         className="flex flex-column w-full gap-5 m-auto mt-auto"
@@ -56,14 +58,7 @@ const Login = () => {
           value={formik.values.userName}
           error={formik.touched.userName && formik.errors.userName}
         />
-        <Input
-          title={"email"}
-          formik={formik}
-          type={"email"}
-          text={"E-mail"}
-          value={formik.values.email}
-          error={formik.touched.email && formik.errors.email}
-        />
+        
         <Input
           title={"password"}
           formik={formik}

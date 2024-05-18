@@ -19,11 +19,8 @@ export const signInUser = createAsyncThunk(
       });
       // Token'ı localStorage'a kaydet
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("email", credentials.email);
-      setInterval(() => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("email");
-      }, 10000);
+      localStorage.setItem("username", credentials.userName);
+    
       return response.data;
     } catch (error) {
       if (error.response && error.response.data) {
